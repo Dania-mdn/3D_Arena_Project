@@ -55,6 +55,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cylinder (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 6530636074268962854, guid: b9b744ec47f869a42880533e9164bb3d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6530636074268962873, guid: b9b744ec47f869a42880533e9164bb3d,
         type: 3}
       propertyPath: m_RootOrder
@@ -130,6 +135,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6559902898393314725, guid: c01e5fb9045cd534280df4057a697b8c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6559902898393314726, guid: c01e5fb9045cd534280df4057a697b8c,
         type: 3}
       propertyPath: m_RootOrder
@@ -204,6 +214,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cylinder (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030402305454799861, guid: 4fee22e352ecb7549a8727e381d60ead,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5030402305454799865, guid: 4fee22e352ecb7549a8727e381d60ead,
         type: 3}
@@ -335,6 +350,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cylinder (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8879623219833333054, guid: d9705684cf086674a8ad47c88301db35,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9705684cf086674a8ad47c88301db35, type: 3}
 --- !u!4 &6555852933213613889 stripped
@@ -354,6 +374,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cylinder (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769435943530390544, guid: c3d324d791991f743a1976b6722c9926,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8769435943530390556, guid: c3d324d791991f743a1976b6722c9926,
         type: 3}
@@ -429,6 +454,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cylinder (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073935049765088720, guid: bf60483435d43e04bacdde6c5ed60f3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8073935049765088724, guid: bf60483435d43e04bacdde6c5ed60f3f,
         type: 3}
@@ -560,6 +590,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cylinder (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 8000813060973175067, guid: 29518375b7fbedb42a6e488beb2d00fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29518375b7fbedb42a6e488beb2d00fb, type: 3}
 --- !u!4 &6555852934054752236 stripped
@@ -579,6 +614,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cylinder
+      objectReference: {fileID: 0}
+    - target: {fileID: 7789624490370092083, guid: 5ca8c1ad683176d4682823d0ebdd8a0e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7789624490370092087, guid: 5ca8c1ad683176d4682823d0ebdd8a0e,
         type: 3}
@@ -710,6 +750,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cylinder (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 473684265195181425, guid: 0642d3c240dcb0a45955329580af95c4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0642d3c240dcb0a45955329580af95c4, type: 3}
 --- !u!4 &6555852933504897909 stripped
@@ -729,6 +774,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cylinder (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872701643965455692, guid: c225977828b381140ac29a90d3e272a3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3872701643965455695, guid: c225977828b381140ac29a90d3e272a3,
         type: 3}
@@ -805,6 +855,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cylinder (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3124898426603792497, guid: fba55af90ab22c543a6235f6fc061660,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3124898426603792498, guid: fba55af90ab22c543a6235f6fc061660,
         type: 3}
       propertyPath: m_RootOrder
@@ -879,6 +934,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351432113684089108, guid: 43f01829ba84db549ae3ec2b5d2bd0e3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3351432113684089109, guid: 43f01829ba84db549ae3ec2b5d2bd0e3,
         type: 3}
