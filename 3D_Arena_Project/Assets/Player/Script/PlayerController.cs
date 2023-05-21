@@ -2,13 +2,9 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(InputController))]
+[RequireComponent(typeof(PlayerCharacteristic))]
 public class PlayerController : MonoBehaviour
 {
-	[Header("Player")]
-	[HideInInspector] public float MoveSpeed;
-	[HideInInspector] public float RotationSpeed;
-	[HideInInspector] public float SpeedChangeRate;
-
 	[Header("Player Grounded")]
 	[SerializeField] private bool _grounded = true;
 	[SerializeField] private float _groundedOffset = -0.14f;
@@ -17,6 +13,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private GameObject _cinemachineCameraTarget;
 	[SerializeField] private float _topClamp = 90.0f;
 	[SerializeField] private float _bottomClamp = -90.0f;
+	[SerializeField] private GameObject PlayerClone;
 
 	// cinemachine
 	private float _cinemachineTargetPitch;
@@ -30,12 +27,14 @@ public class PlayerController : MonoBehaviour
 	//system
 	private CharacterController _controller;
 	private InputController _input;
+	private PlayerCharacteristic _playerCharacteristic;
 	private const float _threshold = 0.01f;
 
 	private void Start()
 	{
 		_controller = GetComponent<CharacterController>();
 		_input = GetComponent<InputController>();
+		_playerCharacteristic = GetComponent<PlayerCharacteristic>();
 	}
 	private void Update()
 	{
@@ -56,8 +55,8 @@ public class PlayerController : MonoBehaviour
     {
         if (_input.Look.sqrMagnitude >= _threshold)
         {
-            _cinemachineTargetPitch += _input.Look.y * RotationSpeed * Time.deltaTime;
-            _rotationVelocity = _input.Look.x * RotationSpeed * Time.deltaTime;
+            _cinemachineTargetPitch += _input.Look.y * _playerCharacteristic.RotationSpeed * Time.deltaTime;
+            _rotationVelocity = _input.Look.x * _playerCharacteristic.RotationSpeed * Time.deltaTime;
 
             _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, _bottomClamp, _topClamp);
 
@@ -76,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
 	{
-		float targetSpeed = MoveSpeed;
+		float targetSpeed = _playerCharacteristic.MoveSpeed;
 
 		float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
@@ -85,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
 		if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
 		{
-			_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
+			_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * _playerCharacteristic.SpeedChangeRate);
 
 			_speed = Mathf.Round(_speed * 1000f) / 1000f;
 		}
@@ -121,7 +120,16 @@ public class PlayerController : MonoBehaviour
 			_verticalVelocity -= _gravity * Time.deltaTime;
 		}
 	}
-	private void OnDrawGizmosSelected()
+    private void OnTriggerExit(Collider other)
+    {
+		if(other.gameObject.CompareTag("Ground"))
+        {
+			GameObject ClonePlayer =  Instantiate(PlayerClone, transform.position, Quaternion.identity);
+			EventManager.DoPlayerNewPosition();
+			EventManager.DoCreateClonePlayer(ClonePlayer.transform);
+        }
+    }
+    private void OnDrawGizmosSelected()
 	{
 		Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
 		Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);

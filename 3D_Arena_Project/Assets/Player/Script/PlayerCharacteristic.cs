@@ -2,38 +2,61 @@ using UnityEngine;
 
 public class PlayerCharacteristic : Characteristic
 {
+    [SerializeField] private int _maxPower = 100;
+    [SerializeField] private int _minPower = 0;
     [Range(0, 100)]
-    [SerializeField] private int _strength = 50;
+    [SerializeField] private int _Power = 50;
 
-    private PlayerController _playerController;
-    [SerializeField] private float _moveSpeed = 4.0f;
-    [SerializeField] private float _rotationSpeed = 1.0f;
-    [SerializeField] private float _speedChangeRate = 10.0f;
+    public float MoveSpeed = 4.0f;
+    public float RotationSpeed = 1.0f;
+    public float SpeedChangeRate = 10.0f;
 
-    private AttackHandler _attackHandler;
-    [SerializeField] private float _bulletSpeed = 4.0f;
-    [SerializeField] private float _rateOfFire;
+    public float BulletSpeed = 4.0f;
+    [Tooltip("Âðåìÿ ìåæäó âûñòðåëàìè âñåêóíäàõ")]
+    public float RateOfFire;
 
+    private void OnEnable()
+    {
+        EventManager.KillEnemy += AddValueForPower;
+        EventManager.KillEnemyRicoñhet += AddValueForHealt;
+    }
+    private void OnDisable()
+    {
+        EventManager.KillEnemy -= AddValueForPower;
+        EventManager.KillEnemyRicoñhet -= AddValueForHealt;
+    }
     private void Start()
     {
-        _playerController = GetComponent<PlayerController>();
-        _playerController.MoveSpeed = _moveSpeed;
-        _playerController.RotationSpeed = _rotationSpeed;
-        _playerController.SpeedChangeRate = _speedChangeRate;
-
-        _attackHandler = GetComponent<AttackHandler>();
-        _attackHandler.BulletSpeed = _bulletSpeed;
-        _attackHandler.BulletDamage = _damage;
-        _attackHandler._rateOfFire = _rateOfFire;
+        EventManager.DoSetMaxPlayerHelth(_maxhealth);
+        EventManager.DoSetPlayerHealth(_health);
+        EventManager.DoSetPlayerPower(_Power);
     }
     public void TakeDamageForHealt(int damageForHealt)
     {
         _health -= damageForHealt;
-        if (_health < 0)
-            EventManager.DoEndGame();
+        EventManager.DoSetPlayerHealth(_health);
+        if (_health < 0) EventManager.DoEndGame();
     }
     public void TakeDamageForPower(int damageForPower)
     {
-        _strength -= damageForPower;
+        _Power -= damageForPower;
+        _Power = Mathf.Clamp(_Power, _minPower, _maxPower);
+        EventManager.DoSetPlayerPower(_Power);
+    }
+    public void resetPower()
+    {
+        _Power = _minPower;
+    }
+    public void AddValueForHealt(int valueForHealt)
+    {
+        _health = _maxhealth / 100 * valueForHealt;
+        _health = Mathf.Clamp(_health, _minhealth, _maxhealth);
+        EventManager.DoSetPlayerHealth(_health);
+    }
+    public void AddValueForPower(int valueForPower)
+    {
+        _Power += valueForPower;
+        _Power = Mathf.Clamp(_Power, _minPower, _maxPower);
+        EventManager.DoSetPlayerPower(_Power);
     }
 }

@@ -112,7 +112,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &4812153321045558574
@@ -127,10 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 943ebb117b7d5574aa201c317c3be7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BolletDamage: 0
-  _enemyBlueLayers:
+  Damage: 0
+  BoolSpeed: 0
+  PlayerCharacteristic: {fileID: 0}
+  _strenthForKillBlueEnemy: 50
+  _strenthForKillRedEnemy: 15
+  _enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
-  _enemyRedLayers:
-    serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024

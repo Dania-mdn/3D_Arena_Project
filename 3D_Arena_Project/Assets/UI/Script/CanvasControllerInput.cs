@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CanvasControllerInput : MonoBehaviour
 {
-
     [Header("Output")]
     [SerializeField] private InputController _inputController;
 
@@ -16,13 +15,13 @@ public class CanvasControllerInput : MonoBehaviour
         _inputController.LookInput(LookDirection);
     }
 
-    public void Shoot(bool ShutState)
+    public void Shoot()
     {
-        _inputController.ShootInput(ShutState);
+        _inputController.ShootInput();
     }
 
-    public void Ulta(bool UltaState)
+    public void Ulta()
     {
-        _inputController.UltaInput(UltaState);
+        _inputController.UltaInput();
     }
 }

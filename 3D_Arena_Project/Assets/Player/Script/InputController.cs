@@ -1,11 +1,7 @@
 using UnityEngine;
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-using UnityEngine.InputSystem;
-#endif
 
 public class InputController : MonoBehaviour
 {
-	[Header("Character Input Values")]
 	public Vector2 Move;
 	public Vector2 Look;
 	[SerializeField] private bool _shoot;
@@ -16,7 +12,6 @@ public class InputController : MonoBehaviour
     private void Start()
     {
 		_attackHandler = GetComponent<AttackHandler>();
-
 	}
 
     public void MoveInput(Vector2 newMoveDirection)
@@ -29,17 +24,13 @@ public class InputController : MonoBehaviour
 		Look = newLookDirection;
 	}
 
-	public void ShootInput(bool newShutState)
+	public void ShootInput()
 	{
-		_shoot = newShutState;
 		_attackHandler.Shoot();
-		_shoot = false;
 	}
 
-	public void UltaInput(bool newUltaState)
+	public void UltaInput()
 	{
-		_ulta = newUltaState;
 		_attackHandler.Ulta();
-		_ulta = false;
 	}
 }
