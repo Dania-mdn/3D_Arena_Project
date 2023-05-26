@@ -1110,7 +1110,7 @@ MonoBehaviour:
   _spawnHeight: 0.31
   _spawnTimer: 5
   _minSpawnTime: 2
-  _timeReductionStep: 0.5
+  _timeReductionStep: 0.1
 --- !u!4 &474020684
 Transform:
   m_ObjectHideFlags: 0

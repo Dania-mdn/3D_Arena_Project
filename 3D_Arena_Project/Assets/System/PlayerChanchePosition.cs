@@ -18,23 +18,38 @@ public class PlayerChanchePosition : MonoBehaviour
 	}
     private void MoveToRandomPosition()
     {
+		NewPlayerPosition = Vector3.zero;
 		_enemies = GameObject.FindGameObjectsWithTag("Enemy");
+		float radius = _ground.transform.localScale.x / 2;
 
-		for(int i = 0; i < 1; i++)
+		for (float x = -radius; x <= radius; x++)
 		{
-			Vector2 randomCirclePos = Random.onUnitSphere.normalized * (_ground.transform.localScale.x / 2.2f);
-			Vector3 NewPosition = _ground.transform.position + new Vector3(randomCirclePos.x, _ground.transform.position.y + 0.2f, randomCirclePos.y);
-
-			foreach (GameObject enemy in _enemies)
+			for (float z = -radius; z <= radius; z++)
 			{
-				float distance = Vector3.Distance(NewPosition, enemy.transform.position);
-				if (distance > maxDistance)
+				Vector3 point = new Vector3(x, _ground.transform.position.y + 0.2f, z);
+
+				if (Vector3.Distance(point, _ground.transform.position) <= radius)
 				{
-					maxDistance = distance;
-					NewPlayerPosition = NewPosition;
+					float distanceSum = 0f;
+					foreach (GameObject otherX in _enemies)
+					{
+						foreach (GameObject otherZ in _enemies)
+						{
+							Vector3 otherPoint = new Vector3(otherX.transform.position.x, _ground.transform.position.y + 0.2f, otherZ.transform.position.z);
+
+							if (point != otherPoint)
+								distanceSum += Vector3.Distance(point, otherPoint);
+						}
+					}
+
+					if (distanceSum > maxDistance)
+					{
+						maxDistance = distanceSum;
+						NewPlayerPosition = point;
+					}
 				}
 			}
 		}
-		_player.transform.position = NewPlayerPosition;
+		_player.transform.position = NewPlayerPosition + _ground.transform.position;
 	}
 }

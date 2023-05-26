@@ -12,6 +12,7 @@ public class Characteristic : MonoBehaviour
         set { _health = Mathf.Clamp(value, 0, _maxhealth); }
     }
 
+    [Header("Bullet")]
     public int Damage;
     public void Destroy()
     {

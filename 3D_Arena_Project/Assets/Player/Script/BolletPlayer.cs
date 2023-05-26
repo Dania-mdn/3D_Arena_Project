@@ -5,6 +5,8 @@ public class BolletPlayer : Bollet
     [SerializeField] private int _strenthForKillBlueEnemy = 50;
     [SerializeField] private int _strenthForKillRedEnemy = 15;
     [SerializeField] private int _strenthForKillRicoshet = 5;
+    [Tooltip("Значение в процентном соотношении")]
+    [SerializeField] private int _HelthForKillRicoshetInPrecent = 50;
 
     [SerializeField] private LayerMask _enemyLayer;
     private int _minPlayerHealth = 25;
@@ -39,8 +41,7 @@ public class BolletPlayer : Bollet
                 else
                 {
                     DestroyHitEnemy(Characteristic, 0);
-                    //сказанно увеличть на половину, поэтому для целостности данных я передам значение в процентном соотношении
-                    EventManager.DoKillEnemyRicoсhet(50);
+                    EventManager.DoKillEnemyRicoсhet(_HelthForKillRicoshetInPrecent);
                 }
             }
             Destroy(gameObject);

@@ -2,18 +2,20 @@ using UnityEngine;
 
 public class PlayerCharacteristic : Characteristic
 {
+    public float BulletSpeed = 4.0f;
+    [Tooltip("Время между выстрелами всекундах")]
+    public float RateOfFire;
+
+    [Header("Player")]
     [SerializeField] private int _maxPower = 100;
     [SerializeField] private int _minPower = 0;
     [Range(0, 100)]
     [SerializeField] private int _Power = 50;
 
-    public float MoveSpeed = 4.0f;
-    public float RotationSpeed = 1.0f;
+    public float MoveSpeed = 2.0f;
+    public float RotationSpeed = 2.0f;
     public float SpeedChangeRate = 10.0f;
 
-    public float BulletSpeed = 4.0f;
-    [Tooltip("Время между выстрелами всекундах")]
-    public float RateOfFire;
 
     private void OnEnable()
     {
